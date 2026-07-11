@@ -149,8 +149,35 @@
   </div>
 </section>
 
+<!-- ======================= MOTION (Lottie) ======================= -->
+<section id="motion">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>움직임으로 보는 Parlo</h2>
+      <p>세 가지 핵심 — 말하는 즉시 번역되고, 끝나면 알아서 저장되고, 인터넷이 없어도 멈추지 않습니다.</p>
+    </div>
+    <div class="lottie-grid">
+      <div class="lottie-card">
+        <div class="lottie-box" data-lottie="assets/lottie/live.json" aria-label="실시간 번역 애니메이션"></div>
+        <h3>⚡️ 말이 끝나기 전에</h3>
+        <p>파형이 튀는 동안 번역 문장이 이미 나타납니다. 기다림이라는 개념이 없습니다.</p>
+      </div>
+      <div class="lottie-card">
+        <div class="lottie-box" data-lottie="assets/lottie/save.json" aria-label="자동 저장 애니메이션"></div>
+        <h3>📂 끝나면 알아서 저장</h3>
+        <p>밀어서 종료하는 순간 대화 전체가 히스토리로. 버튼 하나 더 누를 일이 없습니다.</p>
+      </div>
+      <div class="lottie-card">
+        <div class="lottie-box" data-lottie="assets/lottie/offline.json" aria-label="오프라인 동작 애니메이션"></div>
+        <h3>✈️ 비행기 모드에서도</h3>
+        <p>인터넷이 꺼져도 번역은 계속 흐릅니다. 알림 하나 뜨지 않고, 그냥 됩니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ======================= LANGUAGES ======================= -->
-<section id="langs">
+<section id="langs" class="alt">
   <div class="wrap">
     <div class="sec-head">
       <h2>9개 언어, 서로 자유롭게</h2>
@@ -171,7 +198,7 @@
 </section>
 
 <!-- ======================= DEMO ======================= -->
-<section class="alt" id="demo">
+<section id="demo">
   <div class="wrap">
     <div class="sec-head">
       <h2>이렇게 흐릅니다</h2>
@@ -280,6 +307,28 @@
   </div>
 </footer>
 
+<script src="assets/lottie/lottie_light.min.js"></script>
+<script>
+/* Feature lotties — start each when it scrolls into view */
+(function () {
+  if (typeof lottie === 'undefined') return;
+  var boxes = document.querySelectorAll('[data-lottie]');
+  boxes.forEach(function (box) {
+    var anim = lottie.loadAnimation({
+      container: box,
+      renderer: 'svg',
+      loop: true,
+      autoplay: false,
+      path: box.getAttribute('data-lottie')
+    });
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { anim.play(); } else { anim.pause(); }
+      });
+    }, { threshold: 0.25 }).observe(box);
+  });
+})();
+</script>
 <script>
 /* Hero: volatile line types itself, live translation follows */
 (function () {

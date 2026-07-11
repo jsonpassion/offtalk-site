@@ -187,6 +187,22 @@ section.alt { background: var(--panel); border-top: 1px solid var(--line); borde
 .card h3 { font-size: 16.5px; margin: 12px 0 8px; }
 .card p { font-size: 14px; color: var(--body); }
 
+/* Motion (Lottie) */
+.lottie-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.lottie-card {
+  background: var(--panel-2); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 20px 22px 24px;
+  transition: transform .15s, border-color .15s;
+}
+.lottie-card:hover { transform: translateY(-3px); border-color: #31405c; }
+.lottie-box {
+  height: 200px; margin-bottom: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.lottie-box svg { max-height: 200px; }
+.lottie-card h3 { font-size: 16.5px; margin-bottom: 8px; }
+.lottie-card p { font-size: 14px; color: var(--body); }
+
 /* Languages */
 .langs { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 .lang-chip {
@@ -323,6 +339,7 @@ footer .copy { margin-left: auto; }
 /* ------------------------------ Responsive ------------------------------ */
 @media (max-width: 900px) {
   .pricing { grid-template-columns: 1fr; }
+  .lottie-grid { grid-template-columns: 1fr; }
   .hero { grid-template-columns: 1fr; padding-top: 56px; text-align: center; }
   .hero .sub { margin-left: auto; margin-right: auto; }
   .hero-ctas { justify-content: center; }
