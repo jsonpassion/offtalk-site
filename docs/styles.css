@@ -203,14 +203,16 @@ section.alt { background: var(--panel); border-top: 1px solid var(--line); borde
 .lottie-card h3 { font-size: 16.5px; margin-bottom: 8px; }
 .lottie-card p { font-size: 14px; color: var(--body); }
 
-/* Languages */
-.langs { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-.lang-chip {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--panel-2); border: 1px solid var(--line);
-  padding: 10px 18px; border-radius: 999px; font-size: 14.5px; font-weight: 600;
+/* Languages orbit */
+.lang-orbit {
+  height: 400px; max-width: 440px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
 }
-.lang-chip .flag { font-size: 18px; }
+.lang-orbit svg { max-height: 400px; }
+.lang-list {
+  text-align: center; color: var(--dim); font-size: 13.5px;
+  margin-top: 6px; letter-spacing: .01em;
+}
 
 /* Demo */
 .demo-box {
