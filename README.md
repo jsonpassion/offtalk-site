@@ -1,10 +1,10 @@
-# parlo-site
+# offtalk-site
 
-Landing site & legal docs for **Parlo (파를로)** — the iOS live voice translator
-that runs 100% on-device.
+Landing site & legal docs for **OffTalk (오프톡)** — the iOS live voice interpreter
+that works where there's no internet at all.
 
-- Live: https://jsonpassion.github.io/parlo-site/
-- App repo: [jsonpassion/Parlo](https://github.com/jsonpassion/Parlo) (private)
+- Live: https://jsonpassion.github.io/offtalk-site/
+- App repo: [jsonpassion/OffTalk](https://github.com/jsonpassion/OffTalk) (private)
 
 ## Structure
 
@@ -13,7 +13,8 @@ docs/
 ├── index.html     # landing page (ko)
 ├── privacy.html   # privacy policy (ko/en)
 ├── terms.html     # terms of service (ko/en)
-└── styles.css
+├── styles.css     # daylight theme
+└── assets/lottie/ # hand-built animations + self-hosted player
 ```
 
 Served by GitHub Pages from `main` → `/docs`. Pure static HTML/CSS/JS — no build step.
