@@ -148,6 +148,17 @@
   </div>
 </section>
 
+<!-- ======================= CINEMATIC BAND ======================= -->
+<section class="cine" aria-label="기내에서 웃으며 대화하는 두 승객">
+  <video class="cine-video" autoplay muted loop playsinline preload="metadata" src="assets/video/cabin.mp4"></video>
+  <div class="cine-veil" aria-hidden="true"></div>
+  <div class="cine-copy wrap">
+    <span class="cine-eyebrow">30,000 FT · 신호 없음</span>
+    <h2>3만 피트 위, 신호 제로.<br />그래도 대화는 이어집니다.</h2>
+    <p>OffTalk은 인터넷이 아니라, 당신의 아이폰 위에서 동작하니까요.</p>
+  </div>
+</section>
+
 <!-- ======================= HOW ======================= -->
 <section class="alt" id="how">
   <div class="wrap">
@@ -355,6 +366,20 @@
   </div>
 </section>
 
+<!-- ======================= CLOSING CTA ======================= -->
+<section class="skyband" aria-label="파란 하늘을 나는 종이비행기">
+  <video class="skyband-video" autoplay muted loop playsinline preload="metadata" src="assets/video/sky.mp4"></video>
+  <div class="skyband-veil" aria-hidden="true"></div>
+  <div class="skyband-copy wrap">
+    <h2>이제, 인터넷 없는 곳으로 떠나세요</h2>
+    <p>통역은 이미 당신의 주머니 안에 있습니다.</p>
+    <a class="store-badge" href="#" onclick="alert('App Store 출시 준비 중입니다!'); return false;">
+      <svg width="22" height="26" viewBox="0 0 22 26" fill="currentColor" aria-hidden="true"><path d="M18.3 13.8c0-3 2.5-4.5 2.6-4.6-1.4-2.1-3.6-2.4-4.4-2.4-1.9-.2-3.7 1.1-4.6 1.1-1 0-2.4-1.1-4-1.1-2 0-3.9 1.2-5 3-2.1 3.7-.5 9.1 1.5 12.1 1 1.5 2.2 3.1 3.8 3 1.5-.1 2.1-1 4-1s2.4 1 4 .9c1.7 0 2.7-1.5 3.7-3 1.2-1.7 1.6-3.4 1.7-3.5-.1 0-3.2-1.2-3.3-4.5zM15.2 4.8c.8-1 1.4-2.4 1.2-3.8-1.2.1-2.7.8-3.5 1.8-.8.9-1.5 2.3-1.3 3.7 1.4.1 2.8-.7 3.6-1.7z"/></svg>
+      <span><small>Download on the</small><span class="big">App Store</span></span>
+    </a>
+  </div>
+</section>
+
 <!-- ======================= FOOTER ======================= -->
 <footer>
   <div class="wrap">
@@ -390,6 +415,19 @@
 })();
 </script>
 <script>
+/* Ambient videos — only play while on screen */
+(function () {
+  var vids = document.querySelectorAll('.cine-video, .skyband-video');
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.play().catch(function(){}); }
+      else { e.target.pause(); }
+    });
+  }, { threshold: 0.1 });
+  vids.forEach(function (v) { io.observe(v); });
+})();
+
 /* Rotating hero location word (Suno-style typing headline) */
 (function () {
   var el = document.getElementById('rotor');
