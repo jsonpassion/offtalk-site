@@ -215,6 +215,12 @@ section.alt { background: var(--panel); border-top: 1px solid var(--line); borde
 .card p { font-size: 14px; color: var(--body); }
 
 /* Motion (Lottie) */
+.brand-anim {
+  width: 132px; height: 132px; margin: 0 auto 40px;
+  border-radius: 30px; overflow: hidden;
+  box-shadow: 0 18px 44px rgba(13,112,234,.28);
+}
+.brand-anim svg { display: block; }
 .lottie-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .lottie-card {
   background: var(--panel-2); border: 1px solid var(--line);
