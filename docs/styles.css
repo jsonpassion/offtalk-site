@@ -309,6 +309,49 @@ section.alt::before {
 .demo-line .dst.pending { color: rgba(5,140,93,.55); font-style: italic; }
 @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
+/* ------------------------------ Video bands ------------------------------ */
+.cine, .skyband {
+  position: relative; overflow: hidden; padding: 0;
+  min-height: 480px; display: flex; align-items: center;
+}
+.cine-video, .skyband-video {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; z-index: 0;
+}
+.cine-veil {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(100deg, rgba(9,25,52,.78) 0%, rgba(9,25,52,.45) 46%, rgba(9,25,52,.05) 78%);
+}
+.cine-copy { position: relative; z-index: 2; padding-top: 72px; padding-bottom: 72px; }
+.cine-eyebrow {
+  display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .18em;
+  color: #bcd8ff; border: 1px solid rgba(188,216,255,.4); border-radius: 999px;
+  padding: 6px 14px; margin-bottom: 18px; backdrop-filter: blur(4px);
+}
+.cine-copy h2 {
+  color: #fff; font-size: clamp(28px, 3.6vw, 44px); font-weight: 850;
+  letter-spacing: -0.02em; line-height: 1.2; max-width: 560px;
+  text-shadow: 0 2px 24px rgba(9,25,52,.5);
+}
+.cine-copy p { color: rgba(255,255,255,.85); font-size: 17px; margin-top: 14px; max-width: 480px; }
+
+.skyband { text-align: center; justify-content: center; min-height: 460px; }
+.skyband-veil {
+  position: absolute; inset: 0; z-index: 1;
+  background: radial-gradient(ellipse at 50% 62%, rgba(8,55,125,.42), rgba(8,55,125,.08) 65%);
+}
+.skyband-copy { position: relative; z-index: 2; padding-top: 84px; padding-bottom: 84px; }
+.skyband-copy h2 {
+  color: #fff; font-size: clamp(30px, 4vw, 48px); font-weight: 850;
+  letter-spacing: -0.02em; text-shadow: 0 2px 26px rgba(8,55,125,.55);
+}
+.skyband-copy p { color: rgba(255,255,255,.92); font-size: 17.5px; margin: 14px 0 30px; text-shadow: 0 1px 14px rgba(8,55,125,.5); }
+.skyband .store-badge { box-shadow: 0 16px 40px rgba(9,25,52,.4); }
+
+@media (max-width: 560px) {
+  .cine, .skyband { min-height: 380px; }
+}
+
 /* Privacy band */
 .privacy-band {
   text-align: center; max-width: 720px; margin: 0 auto;
