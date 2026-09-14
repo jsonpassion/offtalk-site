@@ -3,6 +3,8 @@
 Landing site and legal docs for **Toki (토키)**, the iOS live voice interpreter
 that works where there is no internet at all. One page in Korean and English,
 switched from the top right (`?lang=ko` or `?lang=en` links straight to either).
+Share `/en/` for an English link preview: it carries the English OG tags and
+forwards to `?lang=en`.
 
 - Live: https://jsonpassion.github.io/offtalk-site/
 - App repo: [jsonpassion/OffTalk](https://github.com/jsonpassion/OffTalk) (private)
@@ -14,6 +16,7 @@ docs/
 ├── index.html          # landing page (ko/en)
 ├── privacy.html        # privacy policy (ko/en)
 ├── terms.html          # terms of service (ko/en)
+├── en/index.html       # English share link (OG tags, then forwards to ?lang=en)
 ├── styles.css          # daylight jelly theme
 └── assets/
     ├── js/i18n.js      # English copy and the language switch
