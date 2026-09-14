@@ -122,7 +122,7 @@
     'shot2.alt': 'Conversation screen with sentences and translations stacked in pairs',
     'shot3.alt': 'Language picker listing 9 languages',
     'shot4.alt': 'History screen listing saved conversations',
-    'shot5.alt': 'Onboarding screen saying the conversation keeps going when the signal drops',
+    'shot5.alt': 'Onboarding screen with two passengers laughing in a plane cabin, saying the conversation keeps going when the signal drops',
 
     'langs.eyebrow': 'Languages',
     'langs.h2': '9 languages, any direction',
