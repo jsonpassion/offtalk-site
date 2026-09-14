@@ -463,6 +463,7 @@ section.alt::before {
 .price-card.hot .price { background: linear-gradient(100deg, var(--blue), var(--mint));
   -webkit-background-clip: text; background-clip: text; color: transparent; }
 .price-note { font-size: 13px; color: var(--dim); margin-bottom: 2px; }
+.price-card .price .price-unit { font-size: 17px; font-weight: 700; color: var(--dim); letter-spacing: 0; }
 
 /* FAQ */
 .faq { max-width: 720px; margin: 0 auto; }
