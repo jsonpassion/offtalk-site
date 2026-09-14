@@ -141,12 +141,12 @@
     'privacy.p': 'Toki has no servers, no accounts and no analytics. The only network use is the operating system downloading Apple’s language assets once. After that, the app runs completely offline.',
 
     'pricing.eyebrow': 'Pricing',
-    'pricing.h2': 'Your first 30 minutes are free',
+    'pricing.h2': 'Your first 70 minutes are free',
     'pricing.p': 'Try every feature first, then subscribe to Toki Pro when you want to keep going.',
     'free.h3': 'Start free',
     'free.amount': '$0',
     'free.note': 'Free download',
-    'free.li1': '<strong>30 minutes</strong> with every feature, free',
+    'free.li1': '<strong>70 minutes</strong> with every feature, free',
     'free.li2': 'No limit on conversation length',
     'free.li3': 'All 9 languages, any combination',
     'free.li4': 'Saved conversations are <strong>always</strong> readable',
@@ -163,7 +163,7 @@
 
     'faq.h2': 'Frequently asked questions',
     'faq.q1': 'How much does it cost?',
-    'faq.a1': 'The download is free, and your first 30 minutes include every feature with no limits. To keep using Toki, subscribe to <strong>Toki Pro</strong> for $1.99 a month or $11.99 a year on the US App Store (about $1.00 a month, 49% less). Prices vary by region, and you can cancel anytime in your Apple Account settings. Saved conversations stay readable even without a subscription.',
+    'faq.a1': 'The download is free, and your first 70 minutes include every feature with no limits. The free time is given once per device and does not reset if you reinstall the app. To keep using Toki, subscribe to <strong>Toki Pro</strong> for $1.99 a month or $11.99 a year on the US App Store (about $1.00 a month, 49% less). Prices vary by region, and you can cancel anytime in your Apple Account settings. Saved conversations stay readable even without a subscription.',
     'faq.q2': 'Does it really work without internet?',
     'faq.a2': 'Yes. Download the language packs once (about 50 to 100 MB per language), and both speech recognition and translation run on the device. Try it in airplane mode.',
     'faq.q3': 'Which devices are supported?',
