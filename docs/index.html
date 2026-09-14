@@ -4,8 +4,22 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="theme-color" content="#f3f5fe" />
-<title>Toki 토키, 인터넷 없이 말하는 순간 통역</title>
-<meta name="description" content="Toki(토키)는 인터넷 없이 동작하는 iOS 실시간 음성 통역기입니다. 기내에서, 로밍 없는 여행지에서, 현장 인터뷰와 해외 바이어 미팅에서 말하는 순간 통역됩니다. 로그인도 추적도 없습니다." />
+<script>
+/* Pick the language before first paint so English visitors never see a flash of Korean. */
+(function () { try {
+  var q = new URLSearchParams(location.search).get('lang'), s = null;
+  try { s = localStorage.getItem('toki.lang'); } catch (e) {}
+  var n = (navigator.languages && navigator.languages[0]) || navigator.language || 'ko';
+  var l = (q === 'en' || q === 'ko') ? q : (s === 'en' || s === 'ko') ? s : (/^ko/i.test(n) ? 'ko' : 'en');
+  if (l === 'en') {
+    var r = document.documentElement; r.lang = 'en'; r.classList.add('i18n-wait');
+    setTimeout(function () { r.classList.remove('i18n-wait'); }, 1500);
+  }
+} catch (e) {} })();
+</script>
+<style>.i18n-wait body { opacity: 0; }</style>
+<title data-i18n="meta.title">Toki 토키, 인터넷 없이 말하는 순간 통역</title>
+<meta name="description" data-i18n-attr="content=meta.desc" content="Toki(토키)는 인터넷 없이 동작하는 iOS 실시간 음성 통역기입니다. 기내에서, 로밍 없는 여행지에서, 현장 인터뷰와 해외 바이어 미팅에서 말하는 순간 통역됩니다. 로그인도 추적도 없습니다." />
 <meta property="og:title" content="Toki 토키, 인터넷 없이 말하는 순간 통역" />
 <meta property="og:description" content="비행기 안에서도, 로밍 없는 여행지에서도. 100% 온디바이스 실시간 통역, 당신의 목소리는 폰 밖으로 나가지 않습니다." />
 <meta property="og:type" content="website" />
@@ -16,9 +30,11 @@
 <meta property="og:url" content="https://jsonpassion.github.io/offtalk-site/" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://jsonpassion.github.io/offtalk-site/assets/img/og.jpg" />
+<link rel="alternate" hreflang="ko" href="https://jsonpassion.github.io/offtalk-site/?lang=ko" />
+<link rel="alternate" hreflang="en" href="https://jsonpassion.github.io/offtalk-site/?lang=en" />
 <link rel="icon" type="image/png" href="assets/img/favicon.png" />
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
-<link rel="stylesheet" href="styles.css?v=toki1" />
+<link rel="stylesheet" href="styles.css?v=toki2" />
 </head>
 <body>
 
@@ -31,16 +47,20 @@
   <div class="nav-inner">
     <a class="logo" href="#">
       <img src="assets/img/icon.png" width="30" height="30" alt="" />
-      Toki <span class="kr">토키</span>
+      Toki <span class="kr" data-i18n="brand.kr">토키</span>
     </a>
     <div class="nav-links">
-      <a href="#how">사용 방법</a>
-      <a href="#features">기능</a>
-      <a href="#meet">토키</a>
-      <a href="#langs">지원 언어</a>
-      <a href="#pricing">가격</a>
-      <a href="#faq">FAQ</a>
-      <a class="btn primary nav-cta" href="#download">다운로드</a>
+      <a href="#how" data-i18n="nav.how">사용 방법</a>
+      <a href="#features" data-i18n="nav.features">기능</a>
+      <a href="#meet" data-i18n="nav.meet">토키</a>
+      <a href="#langs" data-i18n="nav.langs">지원 언어</a>
+      <a href="#pricing" data-i18n="nav.pricing">가격</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a class="btn primary nav-cta" href="#download" data-i18n="nav.cta">다운로드</a>
+      <div class="lang-switch" role="group" aria-label="언어" data-i18n-attr="aria-label=switch.label">
+        <button type="button" data-lang="ko" aria-pressed="true">KO</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
     </div>
   </div>
 </nav>
@@ -48,12 +68,12 @@
 <!-- ======================= HERO ======================= -->
 <header class="hero wrap" id="download">
   <div class="hero-copy">
-    <span class="tag"><span class="dot"></span> iOS 오프라인 실시간 통역</span>
+    <span class="tag"><span class="dot"></span> <b data-i18n="hero.tag">iOS 오프라인 실시간 통역</b></span>
     <h1>
       <span class="rotor-wrap"><span class="rotor" id="rotor">기내에서도</span></span>
-      말하는 순간<br /><span class="hl">통역</span>됩니다
+      <span data-i18n="hero.h1">말하는 순간<br /><span class="hl">통역</span>됩니다</span>
     </h1>
-    <p class="sub">
+    <p class="sub" data-i18n="hero.sub">
       토키는 말하는 <strong>즉시</strong> 알아듣고 그 자리에서 통역하는 아이폰 통역기입니다.
       음성 인식부터 번역까지 모두 <strong>아이폰 안에서</strong> 처리하므로, 와이파이도 로밍도 필요 없습니다.
     </p>
@@ -63,36 +83,28 @@
         <svg width="22" height="26" viewBox="0 0 22 26" fill="currentColor" aria-hidden="true"><path d="M18.3 13.8c0-3 2.5-4.5 2.6-4.6-1.4-2.1-3.6-2.4-4.4-2.4-1.9-.2-3.7 1.1-4.6 1.1-1 0-2.4-1.1-4-1.1-2 0-3.9 1.2-5 3-2.1 3.7-.5 9.1 1.5 12.1 1 1.5 2.2 3.1 3.8 3 1.5-.1 2.1-1 4-1s2.4 1 4 .9c1.7 0 2.7-1.5 3.7-3 1.2-1.7 1.6-3.4 1.7-3.5-.1 0-3.2-1.2-3.3-4.5zM15.2 4.8c.8-1 1.4-2.4 1.2-3.8-1.2.1-2.7.8-3.5 1.8-.8.9-1.5 2.3-1.3 3.7 1.4.1 2.8-.7 3.6-1.7z"/></svg>
         <span><small>Download on the</small><span class="big">App Store</span></span>
       </a>
-      <a class="btn ghost" href="#meet">토키 만나보기</a>
+      <a class="btn ghost" href="#meet" data-i18n="hero.meet">토키 만나보기</a>
     </div>
     <div class="moment-chips">
-      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c.9 0 1.6.9 1.6 2.1v4.6l7.4 4.4v2.1l-7.4-2.2v4.3l2.3 1.7v1.6L12 20.3l-3.9.8v-1.6l2.3-1.7v-4.3L3 15.7v-2.1l7.4-4.4V4.6c0-1.2.7-2.1 1.6-2.1z"/></svg>기내에서</span>
-      <span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="7" width="17" height="13" rx="3"/><path d="M9 7V5.2A1.7 1.7 0 0 1 10.7 3.5h2.6A1.7 1.7 0 0 1 15 5.2V7M8 7v13M16 7v13"/></svg>로밍 없는 여행</span>
-      <span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M9 21h6"/></svg>현장 인터뷰</span>
-      <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.3a4.8 4.8 0 0 1 4.8 5.7"/></svg>바이어 미팅</span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c.9 0 1.6.9 1.6 2.1v4.6l7.4 4.4v2.1l-7.4-2.2v4.3l2.3 1.7v1.6L12 20.3l-3.9.8v-1.6l2.3-1.7v-4.3L3 15.7v-2.1l7.4-4.4V4.6c0-1.2.7-2.1 1.6-2.1z"/></svg><b data-i18n="hero.chip1">기내에서</b></span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="7" width="17" height="13" rx="3"/><path d="M9 7V5.2A1.7 1.7 0 0 1 10.7 3.5h2.6A1.7 1.7 0 0 1 15 5.2V7M8 7v13M16 7v13"/></svg><b data-i18n="hero.chip2">로밍 없는 여행</b></span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M9 21h6"/></svg><b data-i18n="hero.chip3">현장 인터뷰</b></span>
+      <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.3a4.8 4.8 0 0 1 4.8 5.7"/></svg><b data-i18n="hero.chip4">바이어 미팅</b></span>
     </div>
   </div>
 
   <div class="hero-visual">
     <div class="hero-halo" aria-hidden="true"></div>
 
-    <div class="float-card float-a" aria-hidden="true">
-      <div class="fpair"><span class="glyph v">A</span><svg class="farrow" viewBox="0 0 16 10"><path d="M1 5h13M10 1.5 14 5l-4 3.5"/></svg><span class="glyph">가</span></div>
-      <div class="fsrc">Is this seat taken?</div>
-      <div class="fdst">이 자리 비어 있나요?</div>
-    </div>
-    <div class="float-card float-b" aria-hidden="true">
-      <div class="fpair"><span class="glyph">가</span><svg class="farrow" viewBox="0 0 16 10"><path d="M1 5h13M10 1.5 14 5l-4 3.5"/></svg><span class="glyph v">あ</span></div>
-      <div class="fsrc">사진 한 장 부탁드립니다</div>
-      <div class="fdst">写真を一枚お願いします</div>
-    </div>
+    <div class="float-card float-a" aria-hidden="true" data-i18n="hero.floatA"><div class="fpair"><span class="glyph v">A</span><svg class="farrow" viewBox="0 0 16 10"><path d="M1 5h13M10 1.5 14 5l-4 3.5"/></svg><span class="glyph">가</span></div><div class="fsrc">Is this seat taken?</div><div class="fdst">이 자리 비어 있나요?</div></div>
+    <div class="float-card float-b" aria-hidden="true" data-i18n="hero.floatB"><div class="fpair"><span class="glyph">가</span><svg class="farrow" viewBox="0 0 16 10"><path d="M1 5h13M10 1.5 14 5l-4 3.5"/></svg><span class="glyph v">あ</span></div><div class="fsrc">사진 한 장 부탁드립니다</div><div class="fdst">写真を一枚お願いします</div></div>
 
     <div class="device">
-      <img src="assets/img/shots/conversation.jpg" width="598" height="1300"
-           alt="토키 대화 화면, 한국어 문장과 영어 번역이 한 쌍씩 쌓여 있습니다" />
+      <img src="assets/img/shots/conversation.jpg" data-src-en="assets/img/shots/en/conversation.jpg" width="598" height="1300"
+           alt="토키 대화 화면, 한국어 문장과 영어 번역이 한 쌍씩 쌓여 있습니다" data-i18n-attr="alt=hero.shotAlt" />
     </div>
 
-    <button class="greeter" id="greeter" type="button" aria-label="토키에게 인사하기">
+    <button class="greeter" id="greeter" type="button" aria-label="토키에게 인사하기" data-i18n-attr="aria-label=hero.greetLabel">
       <span class="greet-bubble" id="greetBubble" aria-live="polite">안녕하세요</span>
       <span class="toki" id="heroToki" data-mood="idle" data-follow style="--size:150px"></span>
     </button>
@@ -103,49 +115,49 @@
 <section id="moments">
   <div class="wrap">
     <div class="sec-head" data-reveal="rise">
-      <span class="eyebrow">언제 쓰나요</span>
-      <h2>이런 순간, 토키가 있습니다</h2>
-      <p>번역 앱은 많지만, 정작 필요한 순간에는 인터넷이 없습니다. 토키는 바로 그 순간을 위해 만들었습니다.</p>
+      <span class="eyebrow" data-i18n="moments.eyebrow">언제 쓰나요</span>
+      <h2 data-i18n="moments.h2">이런 순간, 토키가 있습니다</h2>
+      <p data-i18n="moments.p">번역 앱은 많지만, 정작 필요한 순간에는 인터넷이 없습니다. 토키는 바로 그 순간을 위해 만들었습니다.</p>
     </div>
     <div class="moments">
       <div class="moment jelly" data-reveal="rise" style="--i:0">
         <span class="ico sky"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c.9 0 1.6.9 1.6 2.1v4.6l7.4 4.4v2.1l-7.4-2.2v4.3l2.3 1.7v1.6L12 20.3l-3.9.8v-1.6l2.3-1.7v-4.3L3 15.7v-2.1l7.4-4.4V4.6c0-1.2.7-2.1 1.6-2.1z"/></svg></span>
-        <h3>기내와 공항에서</h3>
-        <p>비행기 모드 그대로, 옆자리 승객이나 환승 카운터 직원과 바로 대화할 수 있습니다.</p>
-        <div class="quote">"혹시 자리를 바꿔주실 수 있을까요?"</div>
+        <h3 data-i18n="m1.h3">기내와 공항에서</h3>
+        <p data-i18n="m1.p">비행기 모드 그대로, 옆자리 승객이나 환승 카운터 직원과 바로 대화할 수 있습니다.</p>
+        <div class="quote" data-i18n="m1.q">"혹시 자리를 바꿔주실 수 있을까요?"</div>
       </div>
       <div class="moment jelly" data-reveal="rise" style="--i:1">
         <span class="ico violet"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="7" width="17" height="13" rx="3"/><path d="M9 7V5.2A1.7 1.7 0 0 1 10.7 3.5h2.6A1.7 1.7 0 0 1 15 5.2V7M8 7v13M16 7v13"/></svg></span>
-        <h3>로밍 없는 여행지에서</h3>
-        <p>유심도 로밍도 없는 첫날, 골목 식당에서도 통역은 끊기지 않습니다.</p>
-        <div class="quote">"이 메뉴에서 가장 덜 매운 음식은 무엇인가요?"</div>
+        <h3 data-i18n="m2.h3">로밍 없는 여행지에서</h3>
+        <p data-i18n="m2.p">유심도 로밍도 없는 첫날, 골목 식당에서도 통역은 끊기지 않습니다.</p>
+        <div class="quote" data-i18n="m2.q">"이 메뉴에서 가장 덜 매운 음식은 무엇인가요?"</div>
       </div>
       <div class="moment jelly" data-reveal="rise" style="--i:2">
         <span class="ico coral"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M9 21h6"/></svg></span>
-        <h3>현장 인터뷰에서</h3>
-        <p>산골 마을이나 지하 공연장처럼 신호가 없는 곳에서도 인터뷰 전체가 기록되고 통역됩니다.</p>
-        <div class="quote">"이 일을 처음 시작하신 계기가 궁금합니다."</div>
+        <h3 data-i18n="m3.h3">현장 인터뷰에서</h3>
+        <p data-i18n="m3.p">산골 마을이나 지하 공연장처럼 신호가 없는 곳에서도 인터뷰 전체가 기록되고 통역됩니다.</p>
+        <div class="quote" data-i18n="m3.q">"이 일을 처음 시작하신 계기가 궁금합니다."</div>
       </div>
       <div class="moment jelly" data-reveal="rise" style="--i:3">
         <span class="ico blue"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.3a4.8 4.8 0 0 1 4.8 5.7"/></svg></span>
-        <h3>해외 바이어 미팅에서</h3>
-        <p>공장 투어나 창고 실사처럼 와이파이가 닿지 않는 현장에서도 협상을 이어갈 수 있습니다.</p>
-        <div class="quote">"이 조건이라면 다음 분기 물량을 늘릴 수 있습니다."</div>
+        <h3 data-i18n="m4.h3">해외 바이어 미팅에서</h3>
+        <p data-i18n="m4.p">공장 투어나 창고 실사처럼 와이파이가 닿지 않는 현장에서도 협상을 이어갈 수 있습니다.</p>
+        <div class="quote" data-i18n="m4.q">"이 조건이라면 다음 분기 물량을 늘릴 수 있습니다."</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ======================= CINEMATIC BAND ======================= -->
-<section class="cine" aria-label="기내에서 웃으며 대화하는 두 승객">
+<section class="cine" aria-label="기내에서 웃으며 대화하는 두 승객" data-i18n-attr="aria-label=cine.label">
   <video class="cine-video" autoplay muted loop playsinline preload="metadata" src="assets/video/cabin.mp4"></video>
   <div class="cine-veil" aria-hidden="true"></div>
   <div class="cine-copy wrap">
     <div class="cine-grid">
       <div>
-        <span class="cine-eyebrow">30,000 FT, 신호 없음</span>
-        <h2>3만 피트 위, 신호가 없어도<br />대화는 이어집니다.</h2>
-        <p>토키는 인터넷이 아니라 당신의 아이폰 위에서 동작하기 때문입니다.</p>
+        <span class="cine-eyebrow" data-i18n="cine.eyebrow">30,000 FT, 신호 없음</span>
+        <h2 data-i18n="cine.h2">3만 피트 위, 신호가 없어도<br />대화는 이어집니다.</h2>
+        <p data-i18n="cine.p">토키는 인터넷이 아니라 당신의 아이폰 위에서 동작하기 때문입니다.</p>
       </div>
       <div class="cine-portrait" aria-hidden="true">
         <video class="cine-portrait-video" autoplay muted loop playsinline preload="metadata" src="assets/video/cabin_portrait.mp4"></video>
@@ -165,25 +177,25 @@
 <section class="alt" id="how">
   <div class="wrap">
     <div class="sec-head" data-reveal="rise">
-      <span class="eyebrow">사용 방법</span>
-      <h2>세 번의 탭이면 충분합니다</h2>
-      <p>회원가입도 복잡한 설정도 없습니다. 언어 팩을 한 번 받아두면 그 뒤로는 완전히 오프라인으로 동작합니다.</p>
+      <span class="eyebrow" data-i18n="how.eyebrow">사용 방법</span>
+      <h2 data-i18n="how.h2">세 번의 탭이면 충분합니다</h2>
+      <p data-i18n="how.p">회원가입도 복잡한 설정도 없습니다. 언어 팩을 한 번 받아두면 그 뒤로는 완전히 오프라인으로 동작합니다.</p>
     </div>
     <div class="steps">
       <div class="step jelly" data-reveal="rise" style="--i:0">
         <div class="step-top"><span class="num">1</span><span class="toki" data-mood="surprised" style="--size:64px"></span></div>
-        <h3>언어 고르기</h3>
-        <p>내가 말할 언어와 상대가 읽을 언어를 고르면, 필요한 음성 모델과 번역 팩을 한 번에 받아옵니다.</p>
+        <h3 data-i18n="s1.h3">언어 고르기</h3>
+        <p data-i18n="s1.p">내가 말할 언어와 상대가 읽을 언어를 고르면, 필요한 음성 모델과 번역 팩을 한 번에 받아옵니다.</p>
       </div>
       <div class="step jelly" data-reveal="rise" style="--i:1">
         <div class="step-top"><span class="num">2</span><span class="toki" data-mood="listening" data-level-auto style="--size:64px"></span></div>
-        <h3>누르고 말하기</h3>
-        <p>말하는 대로 문장이 실시간으로 나타나고, 말이 끝나기도 전에 번역이 아래로 흐릅니다.</p>
+        <h3 data-i18n="s2.h3">누르고 말하기</h3>
+        <p data-i18n="s2.p">말하는 대로 문장이 실시간으로 나타나고, 말이 끝나기도 전에 번역이 아래로 흐릅니다.</p>
       </div>
       <div class="step jelly" data-reveal="rise" style="--i:2">
         <div class="step-top"><span class="num">3</span><span class="toki" data-mood="happy" style="--size:64px"></span></div>
-        <h3>밀어서 마치기</h3>
-        <p>대화가 끝나면 슬라이더를 한 번 밀면 됩니다. 원문과 번역 전체가 기록에 자동으로 저장됩니다.</p>
+        <h3 data-i18n="s3.h3">밀어서 마치기</h3>
+        <p data-i18n="s3.p">대화가 끝나면 슬라이더를 한 번 밀면 됩니다. 원문과 번역 전체가 기록에 자동으로 저장됩니다.</p>
       </div>
     </div>
   </div>
@@ -193,40 +205,40 @@
 <section id="features">
   <div class="wrap">
     <div class="sec-head" data-reveal="rise">
-      <span class="eyebrow">기능</span>
-      <h2>번역 앱은 많습니다.<br />폰 밖으로 나가지 않는 앱은 드뭅니다.</h2>
-      <p>토키는 Apple의 온디바이스 음성 인식과 번역 엔진 위에 만들었습니다. 서버가 없는 것이 아니라, 서버가 필요 없습니다.</p>
+      <span class="eyebrow" data-i18n="features.eyebrow">기능</span>
+      <h2 data-i18n="features.h2">번역 앱은 많습니다.<br />폰 밖으로 나가지 않는 앱은 드뭅니다.</h2>
+      <p data-i18n="features.p">토키는 Apple의 온디바이스 음성 인식과 번역 엔진 위에 만들었습니다. 서버가 없는 것이 아니라, 서버가 필요 없습니다.</p>
     </div>
     <div class="grid">
       <div class="card jelly" data-reveal="rise" style="--i:0">
         <span class="ico sky"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c.9 0 1.6.9 1.6 2.1v4.6l7.4 4.4v2.1l-7.4-2.2v4.3l2.3 1.7v1.6L12 20.3l-3.9.8v-1.6l2.3-1.7v-4.3L3 15.7v-2.1l7.4-4.4V4.6c0-1.2.7-2.1 1.6-2.1z"/></svg></span>
-        <h3>인터넷 없이 동작</h3>
-        <p>언어 팩만 받아두면 비행기 모드에서도 완전한 실시간 통역이 됩니다. 로밍도 와이파이도 필요 없습니다.</p>
+        <h3 data-i18n="f1.h3">인터넷 없이 동작</h3>
+        <p data-i18n="f1.p">언어 팩만 받아두면 비행기 모드에서도 완전한 실시간 통역이 됩니다. 로밍도 와이파이도 필요 없습니다.</p>
       </div>
       <div class="card jelly" data-reveal="rise" style="--i:1">
         <span class="ico violet"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2.5 4.5 13.5H11l-1 8 8.5-11H12l1-8z"/></svg></span>
-        <h3>말하는 순간 번역</h3>
-        <p>문장이 끝나길 기다리지 않습니다. 아직 말하고 있는 단어까지 번역이 미리 흐릅니다.</p>
+        <h3 data-i18n="f2.h3">말하는 순간 번역</h3>
+        <p data-i18n="f2.p">문장이 끝나길 기다리지 않습니다. 아직 말하고 있는 단어까지 번역이 미리 흐릅니다.</p>
       </div>
       <div class="card jelly" data-reveal="rise" style="--i:2">
         <span class="ico coral"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10.5" rx="3"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5M12 14.5v2.5"/></svg></span>
-        <h3>음성이 밖으로 나가지 않음</h3>
-        <p>녹음도 전송도 없습니다. 음성 인식과 번역 모두 기기 안에서 처리되고 바로 사라집니다.</p>
+        <h3 data-i18n="f3.h3">음성이 밖으로 나가지 않음</h3>
+        <p data-i18n="f3.p">녹음도 전송도 없습니다. 음성 인식과 번역 모두 기기 안에서 처리되고 바로 사라집니다.</p>
       </div>
       <div class="card jelly" data-reveal="rise" style="--i:3">
         <span class="ico blue"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3.5" width="13" height="8" rx="3"/><rect x="8" y="12.5" width="13" height="8" rx="3"/></svg></span>
-        <h3>문장 단위 정렬</h3>
-        <p>말이 빨라도 순서가 꼬이지 않습니다. 확정된 문장과 번역이 한 쌍씩 대화처럼 쌓입니다.</p>
+        <h3 data-i18n="f4.h3">문장 단위 정렬</h3>
+        <p data-i18n="f4.p">말이 빨라도 순서가 꼬이지 않습니다. 확정된 문장과 번역이 한 쌍씩 대화처럼 쌓입니다.</p>
       </div>
       <div class="card jelly" data-reveal="rise" style="--i:4">
         <span class="ico violet"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1.6"/><rect x="14" y="5" width="4" height="14" rx="1.6"/></svg></span>
-        <h3>일시정지와 이어 말하기</h3>
-        <p>잠시 멈췄다가 다시 말해도 세션은 계속됩니다. 끊긴 대화도 하나의 기록으로 저장됩니다.</p>
+        <h3 data-i18n="f5.h3">일시정지와 이어 말하기</h3>
+        <p data-i18n="f5.p">잠시 멈췄다가 다시 말해도 세션은 계속됩니다. 끊긴 대화도 하나의 기록으로 저장됩니다.</p>
       </div>
       <div class="card jelly" data-reveal="rise" style="--i:5">
         <span class="ico sky"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5v11M7.5 8 12 3.5 16.5 8M5 13v5a2.5 2.5 0 0 0 2.5 2.5h9A2.5 2.5 0 0 0 19 18v-5"/></svg></span>
-        <h3>기록과 공유</h3>
-        <p>끝난 대화는 자동으로 저장됩니다. 펼쳐 보고, 복사하고, 그대로 공유할 수 있습니다. 모두 내 폰 안에만 남습니다.</p>
+        <h3 data-i18n="f6.h3">기록과 공유</h3>
+        <p data-i18n="f6.p">끝난 대화는 자동으로 저장됩니다. 펼쳐 보고, 복사하고, 그대로 공유할 수 있습니다. 모두 내 폰 안에만 남습니다.</p>
       </div>
     </div>
   </div>
@@ -236,43 +248,43 @@
 <section class="alt" id="meet">
   <div class="wrap">
     <div class="sec-head" data-reveal="rise">
-      <span class="eyebrow">캐릭터</span>
-      <h2>토키를 소개합니다</h2>
-      <p>말을 다른 언어로 실어 나르는 말랑한 말풍선, 토키입니다. 표정만 봐도 지금 무엇을 하고 있는지 알 수 있습니다.</p>
+      <span class="eyebrow" data-i18n="meet.eyebrow">캐릭터</span>
+      <h2 data-i18n="meet.h2">토키를 소개합니다</h2>
+      <p data-i18n="meet.p">말을 다른 언어로 실어 나르는 말랑한 말풍선, 토키입니다. 표정만 봐도 지금 무엇을 하고 있는지 알 수 있습니다.</p>
     </div>
     <div class="moods">
       <button class="mood jelly" type="button" data-reveal="rise" style="--i:0">
         <span class="mood-stage"><span class="toki" data-mood="idle" style="--size:112px"></span></span>
-        <h3>기다리는 중</h3>
-        <p>숨을 쉬며 두리번거립니다. 홈 화면에서 누르면 여러 나라 말로 인사합니다.</p>
+        <h3 data-i18n="mood1.h3">기다리는 중</h3>
+        <p data-i18n="mood1.p">숨을 쉬며 두리번거립니다. 홈 화면에서 누르면 여러 나라 말로 인사합니다.</p>
       </button>
       <button class="mood jelly" type="button" data-reveal="rise" style="--i:1">
         <span class="mood-stage"><span class="toki" data-mood="listening" data-level-auto style="--size:112px"></span></span>
-        <h3>듣는 중</h3>
-        <p>목소리 크기에 맞춰 통통 튀며 귀를 기울입니다.</p>
+        <h3 data-i18n="mood2.h3">듣는 중</h3>
+        <p data-i18n="mood2.p">목소리 크기에 맞춰 통통 튀며 귀를 기울입니다.</p>
       </button>
       <button class="mood jelly" type="button" data-reveal="rise" style="--i:2">
         <span class="mood-stage"><span class="toki" data-mood="talking" style="--size:112px"></span></span>
-        <h3>통역하는 중</h3>
-        <p>번역이 흐르는 동안 입을 오물거리며 말을 옮깁니다.</p>
+        <h3 data-i18n="mood3.h3">통역하는 중</h3>
+        <p data-i18n="mood3.p">번역이 흐르는 동안 입을 오물거리며 말을 옮깁니다.</p>
       </button>
       <button class="mood jelly" type="button" data-reveal="rise" style="--i:3">
         <span class="mood-stage"><span class="toki" data-mood="happy" style="--size:112px"></span></span>
-        <h3>저장 완료</h3>
-        <p>대화가 기록에 저장되면 눈웃음을 지으며 폴짝 뜁니다.</p>
+        <h3 data-i18n="mood4.h3">저장 완료</h3>
+        <p data-i18n="mood4.p">대화가 기록에 저장되면 눈웃음을 지으며 폴짝 뜁니다.</p>
       </button>
       <button class="mood jelly" type="button" data-reveal="rise" style="--i:4">
         <span class="mood-stage"><span class="toki" data-mood="sleepy" style="--size:112px"></span></span>
-        <h3>일시정지</h3>
-        <p>잠시 멈춰두면 꾸벅꾸벅 졸면서 다음 말을 기다립니다.</p>
+        <h3 data-i18n="mood5.h3">일시정지</h3>
+        <p data-i18n="mood5.p">잠시 멈춰두면 꾸벅꾸벅 졸면서 다음 말을 기다립니다.</p>
       </button>
       <button class="mood jelly" type="button" data-reveal="rise" style="--i:5">
         <span class="mood-stage"><span class="toki" data-mood="worried" style="--size:112px"></span></span>
-        <h3>조금 걱정될 때</h3>
-        <p>무료 시간이 얼마 남지 않았거나 문제가 생기면 살짝 걱정합니다.</p>
+        <h3 data-i18n="mood6.h3">조금 걱정될 때</h3>
+        <p data-i18n="mood6.p">무료 시간이 얼마 남지 않았거나 문제가 생기면 살짝 걱정합니다.</p>
       </button>
     </div>
-    <p class="moods-hint">카드를 누르면 토키가 폴짝 뜁니다.</p>
+    <p class="moods-hint" data-i18n="meet.hint">카드를 누르면 토키가 폴짝 뜁니다.</p>
   </div>
 </section>
 
@@ -280,31 +292,31 @@
 <section id="screens">
   <div class="wrap">
     <div class="sec-head" data-reveal="rise">
-      <span class="eyebrow">미리 보기</span>
-      <h2>화면으로 먼저 만나보세요</h2>
-      <p>실제 앱 화면입니다. 복잡한 메뉴 없이, 누르고 말하면 바로 시작됩니다.</p>
+      <span class="eyebrow" data-i18n="screens.eyebrow">미리 보기</span>
+      <h2 data-i18n="screens.h2">화면으로 먼저 만나보세요</h2>
+      <p data-i18n="screens.p">실제 앱 화면입니다. 복잡한 메뉴 없이, 누르고 말하면 바로 시작됩니다.</p>
     </div>
   </div>
   <div class="shots" data-reveal="rise">
     <figure class="shot">
-      <div class="device sm"><img src="assets/img/shots/home.jpg" width="598" height="1300" loading="lazy" alt="홈 화면, 언어 두 개와 통역 시작 버튼" /></div>
-      <figcaption><b>누르고 말하기</b>버튼 하나로 바로 시작</figcaption>
+      <div class="device sm"><img src="assets/img/shots/home.jpg" data-src-en="assets/img/shots/en/home.jpg" width="598" height="1300" loading="lazy" alt="홈 화면, 언어 두 개와 통역 시작 버튼" data-i18n-attr="alt=shot1.alt" /></div>
+      <figcaption data-i18n="shot1.cap"><b>누르고 말하기</b>버튼 하나로 바로 시작</figcaption>
     </figure>
     <figure class="shot">
-      <div class="device sm"><img src="assets/img/shots/conversation.jpg" width="598" height="1300" loading="lazy" alt="대화 화면, 원문과 번역이 한 쌍씩 쌓인 모습" /></div>
-      <figcaption><b>실시간 통역</b>원문과 번역이 한 쌍씩</figcaption>
+      <div class="device sm"><img src="assets/img/shots/conversation.jpg" data-src-en="assets/img/shots/en/conversation.jpg" width="598" height="1300" loading="lazy" alt="대화 화면, 원문과 번역이 한 쌍씩 쌓인 모습" data-i18n-attr="alt=shot2.alt" /></div>
+      <figcaption data-i18n="shot2.cap"><b>실시간 통역</b>원문과 번역이 한 쌍씩</figcaption>
     </figure>
     <figure class="shot">
-      <div class="device sm"><img src="assets/img/shots/languages.jpg" width="598" height="1300" loading="lazy" alt="언어 선택 화면, 9개 언어 목록" /></div>
-      <figcaption><b>9개 언어</b>어떤 조합이든 자유롭게</figcaption>
+      <div class="device sm"><img src="assets/img/shots/languages.jpg" data-src-en="assets/img/shots/en/languages.jpg" width="598" height="1300" loading="lazy" alt="언어 선택 화면, 9개 언어 목록" data-i18n-attr="alt=shot3.alt" /></div>
+      <figcaption data-i18n="shot3.cap"><b>9개 언어</b>어떤 조합이든 자유롭게</figcaption>
     </figure>
     <figure class="shot">
-      <div class="device sm"><img src="assets/img/shots/history.jpg" width="598" height="1300" loading="lazy" alt="기록 화면, 저장된 대화 목록" /></div>
-      <figcaption><b>자동 저장</b>끝난 대화는 기록으로</figcaption>
+      <div class="device sm"><img src="assets/img/shots/history.jpg" data-src-en="assets/img/shots/en/history.jpg" width="598" height="1300" loading="lazy" alt="기록 화면, 저장된 대화 목록" data-i18n-attr="alt=shot4.alt" /></div>
+      <figcaption data-i18n="shot4.cap"><b>자동 저장</b>끝난 대화는 기록으로</figcaption>
     </figure>
     <figure class="shot">
-      <div class="device sm"><img src="assets/img/shots/offline.jpg" width="598" height="1300" loading="lazy" alt="온보딩 화면, 신호가 끊겨도 대화는 멈추지 않는다는 안내" /></div>
-      <figcaption><b>오프라인</b>신호가 끊겨도 계속</figcaption>
+      <div class="device sm"><img src="assets/img/shots/offline.jpg" data-src-en="assets/img/shots/en/offline.jpg" width="598" height="1300" loading="lazy" alt="온보딩 화면, 신호가 끊겨도 대화는 멈추지 않는다는 안내" data-i18n-attr="alt=shot5.alt" /></div>
+      <figcaption data-i18n="shot5.cap"><b>오프라인</b>신호가 끊겨도 계속</figcaption>
     </figure>
   </div>
 </section>
@@ -313,12 +325,12 @@
 <section id="langs" class="alt">
   <div class="wrap">
     <div class="sec-head" data-reveal="rise">
-      <span class="eyebrow">지원 언어</span>
-      <h2>9개 언어, 서로 자유롭게</h2>
-      <p>Apple 온디바이스 음성 인식과 번역이 모두 지원하는 언어입니다. 어떤 조합으로든 통역됩니다.</p>
+      <span class="eyebrow" data-i18n="langs.eyebrow">지원 언어</span>
+      <h2 data-i18n="langs.h2">9개 언어, 서로 자유롭게</h2>
+      <p data-i18n="langs.p">Apple 온디바이스 음성 인식과 번역이 모두 지원하는 언어입니다. 어떤 조합으로든 통역됩니다.</p>
     </div>
     <div class="lang-orbit" data-reveal="zoom" role="img"
-         aria-label="9개 언어 사이를 토키가 말을 실어 나르며 어떤 조합으로든 통역되는 모습">
+         aria-label="9개 언어 사이를 토키가 말을 실어 나르며 어떤 조합으로든 통역되는 모습" data-i18n-attr="aria-label=langs.label">
       <div class="orbit-stage" id="orbitStage">
         <svg class="orbit-svg" viewBox="0 0 460 460" aria-hidden="true">
           <defs id="orbitDefs"></defs>
@@ -350,25 +362,21 @@
 <section id="demo">
   <div class="wrap">
     <div class="sec-head" data-reveal="rise">
-      <span class="eyebrow">데모</span>
-      <h2>이렇게 흐릅니다</h2>
-      <p>재생을 누르면 실제 앱처럼 문장이 인식되고 번역이 따라붙는 과정을 보여드립니다.</p>
+      <span class="eyebrow" data-i18n="demo.eyebrow">데모</span>
+      <h2 data-i18n="demo.h2">이렇게 흐릅니다</h2>
+      <p data-i18n="demo.p">재생을 누르면 실제 앱처럼 문장이 인식되고 번역이 따라붙는 과정을 보여드립니다.</p>
     </div>
     <div class="demo-box jelly" data-reveal="rise">
       <div class="demo-head">
         <span class="toki" id="demoToki" data-mood="idle" data-level-auto style="--size:46px"></span>
         <span class="rec-pill" id="demoTimer"><i></i><b>0:00</b></span>
-        <span class="demo-langs" aria-label="영어에서 한국어로">
-          <span class="glyph v">A</span>
-          <svg class="farrow" viewBox="0 0 16 10" aria-hidden="true"><path d="M1 5h13M10 1.5 14 5l-4 3.5"/></svg>
-          <span class="glyph">가</span>
-        </span>
+        <span class="demo-langs" aria-label="영어에서 한국어로" data-i18n-attr="aria-label=demo.langsLabel" data-i18n="demo.langs"><span class="glyph v">A</span><svg class="farrow" viewBox="0 0 16 10" aria-hidden="true"><path d="M1 5h13M10 1.5 14 5l-4 3.5"/></svg><span class="glyph">가</span></span>
       </div>
       <div class="demo-transcript" id="demoTranscript" aria-live="polite">
-        <p class="demo-empty">아래 버튼을 누르면 대화가 시작됩니다.</p>
+        <p class="demo-empty" data-i18n="demo.empty">아래 버튼을 누르면 대화가 시작됩니다.</p>
       </div>
       <div class="demo-foot">
-        <span class="saved-chip" id="demoSaved"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 10 17.5 19 7"/></svg>기록에 저장되었습니다</span>
+        <span class="saved-chip" id="demoSaved"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5 10 17.5 19 7"/></svg><b data-i18n="demo.saved">기록에 저장되었습니다</b></span>
         <button class="play-btn" id="demoPlay" type="button">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"/></svg>
           <span>대화 재생</span>
@@ -383,8 +391,8 @@
   <div class="wrap">
     <div class="privacy-band" data-reveal="zoom">
       <span class="ico violet big"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 19.5 6v5.8c0 4.8-3.2 8-7.5 9.2-4.3-1.2-7.5-4.4-7.5-9.2V6L12 3z"/><path d="m8.8 12 2.2 2.2 4.3-4.4"/></svg></span>
-      <h2>당신의 목소리는 폰 밖으로 나가지 않습니다</h2>
-      <p>
+      <h2 data-i18n="privacy.h2">당신의 목소리는 폰 밖으로 나가지 않습니다</h2>
+      <p data-i18n="privacy.p">
         토키에는 서버도, 계정도, 분석 도구도 없습니다. 네트워크는 Apple 언어 자산을 내려받을 때
         운영체제가 한 번 사용할 뿐이며, 그 뒤로 앱은 완전한 오프라인으로 동작합니다.
       </p>
@@ -396,84 +404,85 @@
 <section class="alt" id="pricing">
   <div class="wrap">
     <div class="sec-head" data-reveal="rise">
-      <span class="eyebrow">가격</span>
-      <h2>처음 30분은 무료입니다</h2>
-      <p>모든 기능을 먼저 써보고, 계속 쓰고 싶을 때 Toki Pro를 구독하면 됩니다.</p>
+      <span class="eyebrow" data-i18n="pricing.eyebrow">가격</span>
+      <h2 data-i18n="pricing.h2">처음 30분은 무료입니다</h2>
+      <p data-i18n="pricing.p">모든 기능을 먼저 써보고, 계속 쓰고 싶을 때 Toki Pro를 구독하면 됩니다.</p>
     </div>
     <div class="pricing">
       <div class="price-card jelly" data-reveal="zoom" style="--i:0">
-        <h3>무료로 시작</h3>
-        <div class="price">₩0</div>
-        <div class="price-note">다운로드 무료</div>
+        <h3 data-i18n="free.h3">무료로 시작</h3>
+        <div class="price" data-i18n="free.amount">₩0</div>
+        <div class="price-note" data-i18n="free.note">다운로드 무료</div>
         <ul>
-          <li>처음 <strong>30분</strong>은 모든 기능 무료</li>
-          <li>대화 길이 제한 없이 그대로</li>
-          <li>9개 언어 전부, 어떤 조합이든</li>
-          <li>저장한 대화는 <strong>언제나</strong> 열람</li>
+          <li data-i18n="free.li1">처음 <strong>30분</strong>은 모든 기능 무료</li>
+          <li data-i18n="free.li2">대화 길이 제한 없이 그대로</li>
+          <li data-i18n="free.li3">9개 언어 전부, 어떤 조합이든</li>
+          <li data-i18n="free.li4">저장한 대화는 <strong>언제나</strong> 열람</li>
         </ul>
-        <a class="btn ghost block" href="#download">무료로 시작하기</a>
+        <a class="btn ghost block" href="#download" data-i18n="free.btn">무료로 시작하기</a>
       </div>
       <div class="price-card jelly hot" data-reveal="zoom" style="--i:1">
-        <span class="sale-badge">연간 45% 절약</span>
+        <span class="sale-badge" data-i18n="pro.badge">연간 45% 절약</span>
         <span class="price-toki toki" data-mood="happy" data-style="milk" data-tail="trailing" style="--size:72px" aria-hidden="true"></span>
         <h3>Toki Pro</h3>
-        <div class="price">₩2,900<span class="price-unit"> / 월</span></div>
-        <div class="price-note">또는 연 ₩19,000 (월 ₩1,583꼴)</div>
+        <div class="price" data-i18n="pro.amount">₩2,900<span class="price-unit"> / 월</span></div>
+        <div class="price-note" data-i18n="pro.note">또는 연 ₩19,000 (월 ₩1,583꼴)</div>
         <ul>
-          <li>번역 시간 <strong>무제한</strong></li>
-          <li>월간 또는 연간 자동 갱신 구독</li>
-          <li>언제든 해지, Apple 계정에서 관리</li>
-          <li>앱을 다시 설치해도 자동 복원</li>
+          <li data-i18n="pro.li1">번역 시간 <strong>무제한</strong></li>
+          <li data-i18n="pro.li2">월간 또는 연간 자동 갱신 구독</li>
+          <li data-i18n="pro.li3">언제든 해지, Apple 계정에서 관리</li>
+          <li data-i18n="pro.li4">앱을 다시 설치해도 자동 복원</li>
         </ul>
-        <a class="btn light block" href="#download">앱 다운로드</a>
+        <a class="btn light block" href="#download" data-i18n="pro.btn">앱 다운로드</a>
       </div>
     </div>
+    <p class="price-foot" data-i18n="pricing.foot">한국 App Store 기준 가격입니다.</p>
   </div>
 </section>
 
 <!-- ======================= FAQ ======================= -->
 <section id="faq">
   <div class="wrap">
-    <div class="sec-head" data-reveal="rise"><span class="eyebrow">FAQ</span><h2>자주 묻는 질문</h2></div>
+    <div class="sec-head" data-reveal="rise"><span class="eyebrow">FAQ</span><h2 data-i18n="faq.h2">자주 묻는 질문</h2></div>
     <div class="faq">
       <details>
-        <summary>얼마인가요?</summary>
-        <p>다운로드는 무료이고, 처음 30분은 모든 기능을 제한 없이 써보실 수 있습니다. 계속 쓰시려면 <strong>Toki Pro</strong>를 구독하시면 됩니다. 월 2,900원 또는 연 19,000원(월 1,583원꼴, 45% 절약)이며, 설정의 Apple 계정에서 언제든 해지할 수 있습니다. 구독하지 않아도 저장한 대화는 계속 보실 수 있습니다.</p>
+        <summary data-i18n="faq.q1">얼마인가요?</summary>
+        <p data-i18n="faq.a1">다운로드는 무료이고, 처음 30분은 모든 기능을 제한 없이 써보실 수 있습니다. 계속 쓰시려면 <strong>Toki Pro</strong>를 구독하시면 됩니다. 월 2,900원 또는 연 19,000원(월 1,583원꼴, 45% 절약)이며, 설정의 Apple 계정에서 언제든 해지할 수 있습니다. 구독하지 않아도 저장한 대화는 계속 보실 수 있습니다.</p>
       </details>
       <details>
-        <summary>정말 인터넷 없이 되나요?</summary>
-        <p>네. 언어 팩(언어당 약 50~100MB)을 한 번 받아두면 음성 인식과 번역 모두 기기 안에서 처리됩니다. 비행기 모드에서 그대로 시험해 보실 수 있습니다.</p>
+        <summary data-i18n="faq.q2">정말 인터넷 없이 되나요?</summary>
+        <p data-i18n="faq.a2">네. 언어 팩(언어당 약 50~100MB)을 한 번 받아두면 음성 인식과 번역 모두 기기 안에서 처리됩니다. 비행기 모드에서 그대로 시험해 보실 수 있습니다.</p>
       </details>
       <details>
-        <summary>어떤 기기에서 쓸 수 있나요?</summary>
-        <p>iOS 26 이상이 설치된 iPhone에서 동작합니다. Apple의 최신 온디바이스 음성 인식과 번역 기술을 사용하기 때문입니다.</p>
+        <summary data-i18n="faq.q3">어떤 기기에서 쓸 수 있나요?</summary>
+        <p data-i18n="faq.a3">iOS 26 이상이 설치된 iPhone에서 동작합니다. Apple의 최신 온디바이스 음성 인식과 번역 기술을 사용하기 때문입니다.</p>
       </details>
       <details>
-        <summary>앱 화면은 어떤 언어로 볼 수 있나요?</summary>
-        <p>한국어, English, 日本語, 简体中文 4개 언어를 지원합니다. 처음에는 아이폰의 언어 설정을 따르며, 앱 설정에서 언제든 바꿀 수 있습니다. 통역 언어 9개와는 별개입니다.</p>
+        <summary data-i18n="faq.q4">앱 화면은 어떤 언어로 볼 수 있나요?</summary>
+        <p data-i18n="faq.a4">한국어, English, 日本語, 简体中文 4개 언어를 지원합니다. 처음에는 아이폰의 언어 설정을 따르며, 앱 설정에서 언제든 바꿀 수 있습니다. 통역 언어 9개와는 별개입니다.</p>
       </details>
       <details>
-        <summary>토키는 누구인가요?</summary>
-        <p>앱 안에서 함께하는 말풍선 캐릭터입니다. 듣고, 통역하고, 저장할 때마다 표정과 움직임으로 지금 상태를 알려줍니다.</p>
+        <summary data-i18n="faq.q5">토키는 누구인가요?</summary>
+        <p data-i18n="faq.a5">앱 안에서 함께하는 말풍선 캐릭터입니다. 듣고, 통역하고, 저장할 때마다 표정과 움직임으로 지금 상태를 알려줍니다.</p>
       </details>
       <details>
-        <summary>대화 내용이 어딘가에 저장되나요?</summary>
-        <p>기록은 내 기기 안에만 저장됩니다. 개발자를 포함해 누구도 볼 수 없고, 언제든 앱에서 삭제할 수 있습니다.</p>
+        <summary data-i18n="faq.q6">대화 내용이 어딘가에 저장되나요?</summary>
+        <p data-i18n="faq.a6">기록은 내 기기 안에만 저장됩니다. 개발자를 포함해 누구도 볼 수 없고, 언제든 앱에서 삭제할 수 있습니다.</p>
       </details>
       <details>
-        <summary>번역 품질은 어떤가요?</summary>
-        <p>Apple 번역 엔진을 사용합니다. 일상 대화, 여행, 업무 미팅 수준의 대화에 충분한 품질이며, 인터넷 기반 번역과 달리 지연이 거의 없습니다.</p>
+        <summary data-i18n="faq.q7">번역 품질은 어떤가요?</summary>
+        <p data-i18n="faq.a7">Apple 번역 엔진을 사용합니다. 일상 대화, 여행, 업무 미팅 수준의 대화에 충분한 품질이며, 인터넷 기반 번역과 달리 지연이 거의 없습니다.</p>
       </details>
       <details>
-        <summary>녹음 파일이 남나요?</summary>
-        <p>아니요. 오디오는 인식되는 즉시 버려지며 파일로 저장되지 않습니다. 남는 것은 원문과 번역 텍스트뿐이고, 그것도 내 폰 안에만 있습니다.</p>
+        <summary data-i18n="faq.q8">녹음 파일이 남나요?</summary>
+        <p data-i18n="faq.a8">아니요. 오디오는 인식되는 즉시 버려지며 파일로 저장되지 않습니다. 남는 것은 원문과 번역 텍스트뿐이고, 그것도 내 폰 안에만 있습니다.</p>
       </details>
     </div>
   </div>
 </section>
 
 <!-- ======================= CLOSING CTA ======================= -->
-<section class="finale" aria-label="다운로드 안내">
+<section class="finale" aria-label="다운로드 안내" data-i18n-attr="aria-label=finale.label">
   <div class="finale-greets" aria-hidden="true">
     <span style="--x:8%;--y:22%;--d:0s">Hello</span>
     <span style="--x:22%;--y:70%;--d:-3s">こんにちは</span>
@@ -486,8 +495,8 @@
   </div>
   <div class="finale-copy wrap">
     <span class="toki" id="finaleToki" data-mood="happy" data-style="milk" style="--size:132px"></span>
-    <h2>이제, 인터넷 없는 곳으로 떠나세요</h2>
-    <p>통역은 이미 당신의 주머니 안에 있습니다.</p>
+    <h2 data-i18n="finale.h2">이제, 인터넷 없는 곳으로 떠나세요</h2>
+    <p data-i18n="finale.p">통역은 이미 당신의 주머니 안에 있습니다.</p>
     <a class="store-badge light" href="#" data-soon>
       <svg width="22" height="26" viewBox="0 0 22 26" fill="currentColor" aria-hidden="true"><path d="M18.3 13.8c0-3 2.5-4.5 2.6-4.6-1.4-2.1-3.6-2.4-4.4-2.4-1.9-.2-3.7 1.1-4.6 1.1-1 0-2.4-1.1-4-1.1-2 0-3.9 1.2-5 3-2.1 3.7-.5 9.1 1.5 12.1 1 1.5 2.2 3.1 3.8 3 1.5-.1 2.1-1 4-1s2.4 1 4 .9c1.7 0 2.7-1.5 3.7-3 1.2-1.7 1.6-3.4 1.7-3.5-.1 0-3.2-1.2-3.3-4.5zM15.2 4.8c.8-1 1.4-2.4 1.2-3.8-1.2.1-2.7.8-3.5 1.8-.8.9-1.5 2.3-1.3 3.7 1.4.1 2.8-.7 3.6-1.7z"/></svg>
       <span><small>Download on the</small><span class="big">App Store</span></span>
@@ -498,20 +507,21 @@
 <!-- ======================= FOOTER ======================= -->
 <footer>
   <div class="wrap">
-    <span class="brand"><img src="assets/img/icon.png" width="22" height="22" alt="" />Toki 토키</span>
-    <a href="privacy.html">개인정보 처리방침</a>
-    <a href="terms.html">이용약관</a>
-    <a class="contact-btn" href="mailto:forgelab.aitech@gmail.com?subject=%5BToki%5D%20%EB%AC%B8%EC%9D%98">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 6 8-6"/></svg>문의하기
+    <span class="brand"><img src="assets/img/icon.png" width="22" height="22" alt="" />Toki <span class="kr" data-i18n="brand.kr">토키</span></span>
+    <a href="privacy.html" data-i18n="footer.privacy">개인정보 처리방침</a>
+    <a href="terms.html" data-i18n="footer.terms">이용약관</a>
+    <a class="contact-btn" href="mailto:forgelab.aitech@gmail.com?subject=%5BToki%5D%20%EB%AC%B8%EC%9D%98" data-i18n-attr="href=footer.mailto">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7.5 8 6 8-6"/></svg><b data-i18n="footer.contact">문의하기</b>
     </a>
     <span class="copy">© 2026 ForgeLab</span>
-    <span class="biz">ForgeLab, 대표 Jason Lee</span>
+    <span class="biz" data-i18n="footer.biz">ForgeLab, 대표 Jason Lee</span>
   </div>
 </footer>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/js/toki.js?v=toki1"></script>
-<script src="assets/js/site.js?v=toki1"></script>
+<script src="assets/js/i18n.js?v=toki2"></script>
+<script src="assets/js/toki.js?v=toki2"></script>
+<script src="assets/js/site.js?v=toki2"></script>
 </body>
 </html>

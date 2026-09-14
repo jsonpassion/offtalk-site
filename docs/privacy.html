@@ -3,9 +3,23 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>개인정보 처리방침, Toki 토키</title>
+<script>
+/* Pick the language before first paint so English visitors never see a flash of Korean. */
+(function () { try {
+  var q = new URLSearchParams(location.search).get('lang'), s = null;
+  try { s = localStorage.getItem('toki.lang'); } catch (e) {}
+  var n = (navigator.languages && navigator.languages[0]) || navigator.language || 'ko';
+  var l = (q === 'en' || q === 'ko') ? q : (s === 'en' || s === 'ko') ? s : (/^ko/i.test(n) ? 'ko' : 'en');
+  if (l === 'en') {
+    var r = document.documentElement; r.lang = 'en'; r.classList.add('i18n-wait');
+    setTimeout(function () { r.classList.remove('i18n-wait'); }, 1500);
+  }
+} catch (e) {} })();
+</script>
+<style>.i18n-wait body { opacity: 0; }</style>
+<title data-i18n="meta.title.privacy">개인정보 처리방침, Toki 토키</title>
 <meta name="robots" content="noindex" />
-<meta name="description" content="Toki는 서버도 계정도 없습니다. 음성과 대화는 기기 밖으로 나가지 않습니다." />
+<meta name="description" data-i18n-attr="content=meta.desc.privacy" content="Toki는 서버도 계정도 없습니다. 음성과 대화는 기기 밖으로 나가지 않습니다." />
 <meta property="og:title" content="Toki 토키, 개인정보 처리방침" />
 <meta property="og:description" content="Toki는 서버도 계정도 없습니다. 음성과 대화는 기기 밖으로 나가지 않습니다." />
 <meta property="og:type" content="website" />
@@ -18,7 +32,7 @@
 <meta name="twitter:image" content="https://jsonpassion.github.io/offtalk-site/assets/img/og.jpg" />
 <link rel="icon" type="image/png" href="assets/img/favicon.png" />
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
-<link rel="stylesheet" href="styles.css?v=toki1" />
+<link rel="stylesheet" href="styles.css?v=toki2" />
 </head>
 <body>
 
@@ -26,21 +40,20 @@
   <div class="nav-inner">
     <a class="logo" href="index.html">
       <img src="assets/img/icon.png" width="30" height="30" alt="" />
-      Toki <span class="kr">토키</span>
+      Toki <span class="kr" data-i18n="brand.kr">토키</span>
     </a>
     <div class="nav-links">
-      <a href="index.html">홈</a>
-      <a href="terms.html">이용약관</a>
+      <a href="index.html" data-i18n="nav.home">홈</a>
+      <a href="terms.html" data-i18n="nav.terms">이용약관</a>
+      <div class="lang-switch" role="group" aria-label="언어" data-i18n-attr="aria-label=switch.label">
+        <button type="button" data-lang="ko" aria-pressed="true">KO</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
     </div>
   </div>
 </nav>
 
 <main class="policy">
-  <div class="lang-toggle" role="tablist" aria-label="언어 선택 / Language">
-    <button id="btn-ko" class="active" onclick="setLang('ko')">한국어</button>
-    <button id="btn-en" onclick="setLang('en')">English</button>
-  </div>
-
   <div class="policy-card">
 
     <!-- ================= 한국어 ================= -->
@@ -139,21 +152,14 @@
 
 <footer>
   <div class="wrap">
-    <span class="brand"><img src="assets/img/icon.png" width="22" height="22" alt="" />Toki 토키</span>
-    <a href="privacy.html">개인정보 처리방침</a>
-    <a href="terms.html">이용약관</a>
+    <span class="brand"><img src="assets/img/icon.png" width="22" height="22" alt="" />Toki <span class="kr" data-i18n="brand.kr">토키</span></span>
+    <a href="privacy.html" data-i18n="footer.privacy">개인정보 처리방침</a>
+    <a href="terms.html" data-i18n="footer.terms">이용약관</a>
     <span class="copy">© 2026 ForgeLab</span>
   </div>
 </footer>
 
-<script>
-function setLang(lang) {
-  document.querySelectorAll('.lang-ko').forEach(function (el) { el.style.display = lang === 'ko' ? 'block' : 'none'; });
-  document.querySelectorAll('.lang-en').forEach(function (el) { el.style.display = lang === 'en' ? 'block' : 'none'; });
-  document.getElementById('btn-ko').classList.toggle('active', lang === 'ko');
-  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-}
-</script>
+<script src="assets/js/i18n.js?v=toki2"></script>
 
 </body>
 </html>

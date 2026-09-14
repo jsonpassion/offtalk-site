@@ -1,5 +1,6 @@
 /* Landing page interactions. Every Toki on the page is drawn and
-   animated by toki.js; this file only decides what each one does. */
+   animated by toki.js, copy in both languages comes from i18n.js; this
+   file only decides what each piece does. */
 (function () {
   'use strict';
 
@@ -7,6 +8,8 @@
     : window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function $(id) { return document.getElementById(id); }
   function toki(id) { return window.Toki && Toki.get(typeof id === 'string' ? $(id) : id); }
+  function data(name) { return window.I18N.data(name); }
+  function onLang(fn) { document.addEventListener('toki:lang', fn); }
 
   /* ------------------------------------------------ App Store (coming soon) */
   var toast = $('toast'), toastTimer = null;
@@ -19,7 +22,7 @@
   document.querySelectorAll('[data-soon]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       e.preventDefault();
-      showToast('App Store 출시를 준비하고 있습니다.');
+      showToast(data('soon'));
     });
   });
 
@@ -27,15 +30,18 @@
   (function () {
     var btn = $('greeter'), bubble = $('greetBubble'), t = toki('heroToki');
     if (!btn || !t) return;
-    var HELLOS = ['안녕하세요', 'Hello', 'こんにちは', '你好', 'Hola', 'Bonjour', 'Hallo', 'Ciao', 'Olá'];
     var i = 0, moodTimer = null, cycle = null;
 
-    function next(fromTap) {
-      i = (i + 1) % HELLOS.length;
+    function show(text) {
       bubble.classList.remove('pop');
       void bubble.offsetWidth;
-      bubble.textContent = HELLOS[i];
+      bubble.textContent = text;
       bubble.classList.add('pop');
+    }
+    function next(fromTap) {
+      var hellos = data('hellos');
+      i = (i + 1) % hellos.length;
+      show(hellos[i]);
       t.set({ mood: fromTap ? 'happy' : 'talking' });
       if (fromTap) t.hop();
       clearTimeout(moodTimer);
@@ -46,30 +52,41 @@
       if (!reduce) cycle = setInterval(function () { if (!document.hidden) next(false); }, 3200);
     }
     btn.addEventListener('click', function () { next(true); schedule(); });
+    onLang(function () { i = 0; show(data('hellos')[0]); schedule(); });
+    bubble.textContent = data('hellos')[0];
     schedule();
   })();
 
   /* --------------------------------------------- Rotating place in the headline */
   (function () {
     var el = $('rotor');
-    if (!el || reduce) return;
-    var WORDS = ['기내에서도', '여행지 골목에서도', '인터뷰 현장에서도', '바이어 미팅에서도', '신호 없는 산골에서도'];
-    var w = 0, i = WORDS[0].length, deleting = true;
-    function tick() {
-      var word = WORDS[w];
-      if (!deleting) {
-        i++;
-        el.textContent = word.slice(0, i);
-        if (i >= word.length) { deleting = true; return setTimeout(tick, 1700); }
-        setTimeout(tick, 95);
-      } else {
-        i--;
-        el.textContent = word.slice(0, i);
-        if (i <= 0) { deleting = false; w = (w + 1) % WORDS.length; return setTimeout(tick, 260); }
-        setTimeout(tick, 45);
+    if (!el) return;
+    var run = 0;
+
+    function start(delay) {
+      var words = data('rotor'), gen = ++run;
+      var w = 0, i = words[0].length, deleting = true;
+      el.textContent = words[0];
+      if (reduce) return;
+      function tick() {
+        if (gen !== run) return;
+        var word = words[w];
+        if (!deleting) {
+          i++;
+          el.textContent = word.slice(0, i);
+          if (i >= word.length) { deleting = true; return setTimeout(tick, 1700); }
+          setTimeout(tick, 95);
+        } else {
+          i--;
+          el.textContent = word.slice(0, i);
+          if (i <= 0) { deleting = false; w = (w + 1) % words.length; return setTimeout(tick, 260); }
+          setTimeout(tick, 45);
+        }
       }
+      setTimeout(tick, delay);
     }
-    setTimeout(tick, 2200);
+    onLang(function () { start(1800); });
+    start(2200);
   })();
 
   /* ----------------------------------------------------------- Reveal on scroll */
@@ -105,22 +122,24 @@
   /* ------------------------------------------- Cabin card: live caption bubble */
   (function () {
     var box = $('cineCaption'), src = $('cineSrc'), dst = $('cineDst'), t = toki('cineToki');
-    if (!box || reduce) return;
-    var LINES = [
-      ['Is this seat taken?', '이 자리 비어 있나요?'],
-      ['Not at all, go ahead.', '아니요, 앉으셔도 됩니다.'],
-      ['Where are you headed?', '어디로 가시는 길인가요?'],
-      ['Seoul, for the first time!', '서울이요, 처음 가 봅니다!']
-    ];
+    if (!box) return;
     var i = 0;
+    function render() {
+      var lines = data('cine');
+      src.textContent = lines[i][0];
+      dst.textContent = lines[i][1];
+    }
+    onLang(function () { i = 0; render(); });
+    render();
+    if (reduce) return;
+
     setInterval(function () {
       if (document.hidden) return;
       box.classList.add('swap');
       if (t) t.set({ mood: 'listening' });
       setTimeout(function () {
-        i = (i + 1) % LINES.length;
-        src.textContent = LINES[i][0];
-        dst.textContent = LINES[i][1];
+        i = (i + 1) % data('cine').length;
+        render();
         box.classList.remove('swap');
         setTimeout(function () { if (t) t.set({ mood: 'talking' }); }, 500);
       }, 380);
@@ -239,18 +258,12 @@
 
   /* ----------------------------------------- Demo: the app's conversation card */
   (function () {
-    var LINES = [
-      ['Excuse me, is this seat taken?', '실례합니다, 이 자리 비어 있나요?'],
-      ['No, go ahead!', '아니요, 앉으세요!'],
-      ['Thanks. Are you here for the conference too?', '감사합니다. 학회 때문에 오셨나요?'],
-      ['Yes, and my phone has no signal in here.', '네, 그런데 여기서는 휴대폰 신호가 안 잡히네요.'],
-      ["No problem. This translation doesn't need the internet.", '괜찮습니다. 이 통역은 인터넷이 필요 없거든요.']
-    ];
     var play = $('demoPlay'), list = $('demoTranscript'), saved = $('demoSaved');
     var timerEl = document.querySelector('#demoTimer b'), pill = $('demoTimer');
+    var label = play && play.querySelector('span');
     var t = toki('demoToki');
     if (!play) return;
-    var running = false, clock = null, seconds = 0;
+    var running = false, played = false, session = 0, clock = null, seconds = 0;
 
     function wait(ms) { return new Promise(function (res) { setTimeout(res, reduce ? Math.min(ms, 120) : ms); }); }
     function setClock(on) {
@@ -262,10 +275,11 @@
       }, 1000);
     }
 
-    function typeInto(el, text) {
+    function typeInto(el, text, gen) {
       var words = text.split(' '), k = 0;
       return new Promise(function (res) {
         (function next() {
+          if (gen !== session) return res();
           k++;
           el.textContent = words.slice(0, k).join(' ');
           list.scrollTop = list.scrollHeight;
@@ -275,7 +289,24 @@
       });
     }
 
+    function reset() {
+      session++;
+      running = false; played = false;
+      setClock(false);
+      seconds = 0; timerEl.textContent = '0:00';
+      saved.classList.remove('show');
+      play.disabled = false;
+      label.textContent = data('play');
+      var empty = document.createElement('p');
+      empty.className = 'demo-empty';
+      empty.textContent = data('empty');
+      list.innerHTML = '';
+      list.appendChild(empty);
+      if (t) t.set({ mood: 'idle' });
+    }
+
     async function run() {
+      var gen = ++session, lines = data('demo');
       running = true;
       play.disabled = true;
       saved.classList.remove('show');
@@ -283,34 +314,42 @@
       seconds = 0; timerEl.textContent = '0:00';
       setClock(true);
 
-      for (var n = 0; n < LINES.length; n++) {
+      for (var n = 0; n < lines.length; n++) {
         var row = document.createElement('div');
         row.className = 'demo-line live';
-        row.innerHTML = '<div class="src"></div><div class="dst pending">번역 중</div>';
+        row.innerHTML = '<div class="src"></div><div class="dst pending"></div>';
+        row.querySelector('.dst').textContent = data('pending');
         list.appendChild(row);
         if (t) t.set({ mood: 'listening' });
-        await typeInto(row.querySelector('.src'), LINES[n][0]);
+        await typeInto(row.querySelector('.src'), lines[n][0], gen);
+        if (gen !== session) return;
         if (t) t.set({ mood: 'talking' });
         await wait(520);
+        if (gen !== session) return;
         var dst = row.querySelector('.dst');
-        dst.textContent = LINES[n][1];
+        dst.textContent = lines[n][1];
         dst.classList.remove('pending');
         row.classList.remove('live');
         list.scrollTop = list.scrollHeight;
         await wait(700);
+        if (gen !== session) return;
       }
 
       setClock(false);
       if (t) { t.set({ mood: 'happy' }); t.hop(); }
       saved.classList.add('show');
-      play.querySelector('span').textContent = '다시 재생';
+      played = true;
+      label.textContent = data('replay');
       play.disabled = false;
       running = false;
       await wait(2400);
-      if (!running && t) t.set({ mood: 'idle' });
+      if (gen === session && t) t.set({ mood: 'idle' });
     }
 
     play.addEventListener('click', function () { if (!running) run(); });
+    // A half-played conversation in the other language would be confusing; start over.
+    onLang(function () { if (running || played) reset(); else label.textContent = data('play'); });
+    label.textContent = data('play');
   })();
 
   /* --------------------------------------------- Finale: a hop now and then */
