@@ -73,6 +73,7 @@
         <li>선택한 언어, 화면 안내(팁) 표시 여부 등 앱 설정</li>
       </ul>
       <p>위 데이터는 오직 사용자의 기기 내부에만 저장되며, 개발자를 포함한 외부로 전송되지 않습니다. 앱 내에서 언제든 삭제할 수 있고, 앱을 삭제하면 함께 삭제됩니다.</p>
+      <p><strong>무료 사용 시간 기록:</strong> 무료로 사용한 시간의 누적 값(숫자 하나)은 기기의 키체인과, 사용자가 iCloud에 로그인한 경우 Apple의 iCloud 키-값 저장소에 함께 보관됩니다. 이 값은 앱을 다시 설치하거나 같은 Apple 계정의 새 기기로 바꿨을 때 무료 시간이 다시 제공되지 않도록 하는 데에만 쓰이며, 대화 내용이나 음성은 포함되지 않습니다. iCloud에 보관된 값은 사용자의 기기끼리만 동기화되며 개발자는 접근할 수 없습니다.</p>
 
       <h2>3. 마이크 및 음성 처리</h2>
       <p>앱은 실시간 음성 번역을 위해 마이크 접근 권한과 음성 인식 권한을 요청합니다.</p>
@@ -83,7 +84,7 @@
       </ul>
 
       <h2>4. 네트워크 사용</h2>
-      <p>앱 자체에는 네트워크 통신 기능이 없습니다. 다만 언어 자산(음성 인식 모델, 번역 언어 팩)을 최초 다운로드할 때에 한해 <strong>Apple의 운영체제가</strong> Apple 서버에서 자산을 내려받습니다. 이 과정은 Apple의 개인정보 보호정책을 따릅니다.</p>
+      <p>앱 자체에는 네트워크 통신 기능이 없습니다. 다만 언어 자산(음성 인식 모델, 번역 언어 팩)을 최초 다운로드할 때와 무료 사용 시간 기록을 iCloud로 동기화할 때 <strong>Apple의 운영체제가</strong> Apple 서버와 통신합니다. 이 과정은 Apple의 개인정보 보호정책을 따릅니다.</p>
 
       <h2>5. 제3자 제공 및 분석 도구</h2>
       <p>앱은 광고 SDK, 분석(애널리틱스) 도구, 추적 기술을 일절 사용하지 않으며, 어떠한 정보도 제3자에게 제공하지 않습니다.</p>
@@ -119,6 +120,7 @@
         <li>App preferences such as selected languages and onboarding-tip state</li>
       </ul>
       <p>This data never leaves your device. You can delete it inside the app at any time, and it is removed entirely when you delete the app.</p>
+      <p><strong>Free-time counter:</strong> the total free time you have used (a single number) is kept in your device's Keychain and, if you are signed in to iCloud, in Apple's iCloud key-value storage. It is used only so that reinstalling the app or moving to a new device on the same Apple Account does not grant the free time again. It contains no conversations or audio. The iCloud copy syncs only between your own devices, and the developer cannot access it.</p>
 
       <h2>3. Microphone &amp; Speech Processing</h2>
       <p>The app requests microphone and speech-recognition permissions for live voice translation.</p>
@@ -129,7 +131,7 @@
       </ul>
 
       <h2>4. Network Usage</h2>
-      <p>The app itself contains no networking code. The only network activity is <strong>performed by the operating system</strong> when you first download language assets (speech models and translation packs) from Apple's servers, subject to Apple's privacy policy.</p>
+      <p>The app itself contains no networking code. The only network activity is <strong>performed by the operating system</strong> when you first download language assets (speech models and translation packs) from Apple's servers and when it syncs the free-time counter through iCloud, subject to Apple's privacy policy.</p>
 
       <h2>5. Third Parties &amp; Analytics</h2>
       <p>The app uses no advertising SDKs, no analytics, and no tracking technologies, and shares nothing with third parties.</p>
