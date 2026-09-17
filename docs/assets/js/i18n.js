@@ -14,7 +14,7 @@
 
   var EN = {
     'meta.title': 'Toki, the offline live interpreter for iPhone',
-    'meta.desc': 'Toki is a live voice interpreter for iPhone that works without internet. On a plane, abroad without roaming, at field interviews and meetings overseas, your words are translated the moment you speak. No login, no tracking.',
+    'meta.desc': 'Toki is a live voice interpreter for iPhone that works without internet. On a plane, abroad without roaming, at field interviews and meetings overseas, your words are translated the moment you speak. The translation stays on screen while you use another app. No login, no tracking.',
     'meta.title.terms': 'Terms of Service, Toki',
     'meta.desc.terms': 'Terms of Service for Toki.',
     'meta.title.privacy': 'Privacy Policy, Toki',
@@ -41,6 +41,7 @@
     'hero.chip2': 'Abroad, no roaming',
     'hero.chip3': 'Field interviews',
     'hero.chip4': 'Meetings overseas',
+    'hero.chip5': 'While watching video',
     'hero.floatA': '<div class="fpair"><span class="glyph v">A</span><svg class="farrow" viewBox="0 0 16 10"><path d="M1 5h13M10 1.5 14 5l-4 3.5"/></svg><span class="glyph">あ</span></div><div class="fsrc">Is this seat taken?</div><div class="fdst">この席は空いていますか?</div>',
     'hero.floatB': '<div class="fpair"><span class="glyph">가</span><svg class="farrow" viewBox="0 0 16 10"><path d="M1 5h13M10 1.5 14 5l-4 3.5"/></svg><span class="glyph v">A</span></div><div class="fsrc">사진 한 장 부탁드립니다</div><div class="fdst">Could you take a photo for me?</div>',
     'hero.shotAlt': 'Toki conversation screen with English sentences and Korean translations stacked in pairs',
@@ -110,6 +111,19 @@
     'mood6.p': 'Gets a bit nervous when free time is running low or something goes wrong.',
     'meet.hint': 'Tap a card to make Toki hop.',
 
+    'float.eyebrow': 'Over other apps',
+    'float.h2': 'Watch a video, and the<br />translation stays on screen.',
+    'float.p': 'Send the interpreting to a small window and it does not disappear when you leave the app. Watch a video in another language or check a map, and what is being said stays translated on top of it.',
+    'float.p1t': 'Short vertical clips too',
+    'float.p1': 'Scroll through short vertical videos and the translation comes along.',
+    'float.p2t': 'Pause from the window',
+    'float.p2': 'The window\u2019s play button pauses the interpreting and starts it again.',
+    'float.p3t': 'Long sentences stay whole',
+    'float.p3': 'A long translation is never cut off, and the transcript runs along one line, following the speech.',
+    'float.state': 'Listening',
+    'float.pair': '<span class="glyph">가</span><svg class="farrow" viewBox="0 0 16 10" aria-hidden="true"><path d="M1 5h13M10 1.5 14 5l-4 3.5"/></svg><span class="glyph v">A</span>',
+    'float.videoLabel': 'Translation window floating over a video of two passengers talking in a plane cabin',
+
     'screens.eyebrow': 'Preview',
     'screens.h2': 'See it before you try it',
     'screens.p': 'These are real app screens. No complicated menus, just tap and talk.',
@@ -166,6 +180,8 @@
     'faq.a1': 'The download is free, and your first 30 minutes include every feature with no limits. The free time is given once and does not reset if you reinstall the app or move to a new iPhone on the same Apple Account (iCloud). To keep using Toki, subscribe to <strong>Toki Pro</strong> for $1.99 a month or $11.99 a year on the US App Store (about $1.00 a month, 49% less). Prices vary by region, and you can cancel anytime in your Apple Account settings. Saved conversations stay readable even without a subscription.',
     'faq.q2': 'Does it really work without internet?',
     'faq.a2': 'Yes. Download the language packs once (about 50 to 100 MB per language), and both speech recognition and translation run on the device. Try it in airplane mode.',
+    'faq.q9': 'Does it work while I use other apps?',
+    'faq.a9': 'Yes. While interpreting, send it to a small window and the translation stays on screen after you leave the app. Watch a video or check a map and the interpreting keeps going, and the window\u2019s play button pauses and resumes it.',
     'faq.q3': 'Which devices are supported?',
     'faq.a3': 'Toki runs on iPhone with iOS 26 or later, because it uses Apple’s latest on-device speech recognition and translation technology.',
     'faq.q4': 'Which languages is the app itself available in?',
@@ -208,6 +224,12 @@
         ['Yes, and my phone has no signal in here.', '네, 그런데 여기서는 휴대폰 신호가 안 잡히네요.'],
         ["No problem. This translation doesn't need the internet.", '괜찮습니다. 이 통역은 인터넷이 필요 없거든요.']
       ],
+      float: [
+        ['This airline\u2019s in-flight meal is genuinely good', '이 항공사는 기내식이 진짜 괜찮습니다'],
+        ['Book the window seat ahead of time', '창가 자리는 미리 예약하는 편이 좋습니다'],
+        ['Should I buy a SIM card as soon as we land?', '도착하면 유심부터 사야 할까요?'],
+        ['No, this interpreter does not need the internet', '아니요, 이 통역은 인터넷이 필요 없습니다']
+      ],
       play: '대화 재생',
       replay: '다시 재생',
       pending: '번역 중',
@@ -229,6 +251,12 @@
         ['감사합니다. 학회 때문에 오셨나요?', 'Thanks. Are you here for the conference too?'],
         ['네, 그런데 여기서는 휴대폰 신호가 안 잡히네요.', 'Yes, and my phone has no signal in here.'],
         ['괜찮습니다. 이 통역은 인터넷이 필요 없거든요.', "No problem. This translation doesn't need the internet."]
+      ],
+      float: [
+        ['이 항공사는 기내식이 진짜 괜찮습니다', 'This airline\u2019s in-flight meal is genuinely good'],
+        ['창가 자리는 미리 예약하는 편이 좋습니다', 'Book the window seat ahead of time'],
+        ['도착하면 유심부터 사야 할까요?', 'Should I buy a SIM card as soon as we land?'],
+        ['아니요, 이 통역은 인터넷이 필요 없습니다', 'No, this interpreter does not need the internet']
       ],
       play: 'Play conversation',
       replay: 'Play again',

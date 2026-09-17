@@ -113,7 +113,7 @@
         else e.target.pause();
       });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.cine-video, .cine-portrait-video').forEach(function (v) {
+    document.querySelectorAll('.cine-video, .cine-portrait-video, .pip-video').forEach(function (v) {
       if (reduce) v.removeAttribute('autoplay');
       io.observe(v);
     });
@@ -144,6 +144,31 @@
         setTimeout(function () { if (t) t.set({ mood: 'talking' }); }, 500);
       }, 380);
     }, 3400);
+  })();
+
+  /* ------------------------------- Floating window: the caption keeps arriving */
+  (function () {
+    var card = $('pipCard'), src = $('pipSrc'), dst = $('pipDst');
+    if (!card) return;
+    var i = 0;
+    function render() {
+      var lines = data('float');
+      src.textContent = lines[i][0];
+      dst.textContent = lines[i][1];
+    }
+    onLang(function () { i = 0; render(); });
+    render();
+    if (reduce) return;
+
+    setInterval(function () {
+      if (document.hidden) return;
+      card.classList.add('swap');
+      setTimeout(function () {
+        i = (i + 1) % data('float').length;
+        render();
+        card.classList.remove('swap');
+      }, 320);
+    }, 3800);
   })();
 
   /* ---------------------------------------------------- Mood cards: tap to hop */
