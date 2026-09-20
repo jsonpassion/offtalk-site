@@ -233,8 +233,7 @@
       play: '대화 재생',
       replay: '다시 재생',
       pending: '번역 중',
-      empty: '아래 버튼을 누르면 대화가 시작됩니다.',
-      soon: 'App Store 출시를 준비하고 있습니다.'
+      empty: '아래 버튼을 누르면 대화가 시작됩니다.'
     },
     en: {
       rotor: ['On the plane.', 'At the market.', 'On the job.', 'In the meeting.', 'Off the grid.'],
@@ -261,8 +260,7 @@
       play: 'Play conversation',
       replay: 'Play again',
       pending: 'Translating',
-      empty: 'Press the button below to start the conversation.',
-      soon: 'Coming soon to the App Store.'
+      empty: 'Press the button below to start the conversation.'
     }
   };
 

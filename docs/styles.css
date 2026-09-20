@@ -615,16 +615,6 @@ section.alt::before {
 }
 @keyframes greetFloat { 0%,100% { transform: translateY(0) rotate(-3deg); opacity: .5; } 50% { transform: translateY(-16px) rotate(3deg); opacity: 1; } }
 
-/* Toast */
-.toast {
-  position: fixed; left: 50%; bottom: 28px; z-index: 100;
-  transform: translate(-50%, 20px) scale(.96); opacity: 0; pointer-events: none;
-  background: var(--ink); color: #fff; font-weight: 700; font-size: 14.5px;
-  padding: 12px 20px; border-radius: 999px; box-shadow: 0 14px 34px rgba(27,33,64,.3);
-  transition: opacity .25s var(--ease), transform .45s var(--spring);
-}
-.toast.show { opacity: 1; transform: translate(-50%, 0) scale(1); }
-
 /* ------------------------------------------------------------------ Footer */
 footer { border-top: 1px solid var(--line); padding: 38px 0 50px; background: rgba(255,255,255,.55); }
 footer .wrap { display: flex; align-items: center; flex-wrap: wrap; gap: 18px; font-size: 13.5px; color: var(--dim); }

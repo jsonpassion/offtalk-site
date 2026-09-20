@@ -11,21 +11,6 @@
   function data(name) { return window.I18N.data(name); }
   function onLang(fn) { document.addEventListener('toki:lang', fn); }
 
-  /* ------------------------------------------------ App Store (coming soon) */
-  var toast = $('toast'), toastTimer = null;
-  function showToast(text) {
-    toast.textContent = text;
-    toast.classList.add('show');
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2600);
-  }
-  document.querySelectorAll('[data-soon]').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      e.preventDefault();
-      showToast(data('soon'));
-    });
-  });
-
   /* ------------------------------------------ Hero greeter: hello in 9 tongues */
   (function () {
     var btn = $('greeter'), bubble = $('greetBubble'), t = toki('heroToki');
