@@ -28,7 +28,7 @@
       i = (i + 1) % hellos.length;
       show(hellos[i]);
       t.set({ mood: fromTap ? 'happy' : 'talking' });
-      if (fromTap) t.hop();
+      if (fromTap) t.hop({ sound: true });
       clearTimeout(moodTimer);
       moodTimer = setTimeout(function () { t.set({ mood: 'idle' }); }, fromTap ? 1100 : 700);
     }
@@ -160,7 +160,7 @@
   document.querySelectorAll('.mood').forEach(function (card) {
     card.addEventListener('click', function () {
       var t = toki(card.querySelector('.toki'));
-      if (t) t.hop();
+      if (t) t.hop({ sound: true });
     });
   });
 
@@ -202,7 +202,7 @@
       grad.setAttribute('gradientUnits', 'userSpaceOnUse');
       grad.setAttribute('x1', from.x); grad.setAttribute('y1', from.y);
       grad.setAttribute('x2', to.x); grad.setAttribute('y2', to.y);
-      grad.innerHTML = '<stop offset="0" stop-color="#1c73f7"/><stop offset="1" stop-color="#6e59f2"/>';
+      grad.innerHTML = '<stop offset="0" stop-color="#8c6a50"/><stop offset="1" stop-color="#2f5a8f"/>';
       defs.appendChild(grad);
 
       var path = document.createElementNS(SVGNS, 'path');
@@ -368,7 +368,7 @@
     if (!t || reduce) return;
     var visible = false;
     new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }, { threshold: 0.4 }).observe(el);
-    setInterval(function () { if (visible && !document.hidden) t.hop(); }, 2600);
-    el.addEventListener('click', function () { t.hop(); });
+    setInterval(function () { if (visible && !document.hidden) t.hop(); }, 4500);
+    el.addEventListener('click', function () { t.hop({ sound: true }); });
   })();
 })();

@@ -1,7 +1,7 @@
 # offtalk-site
 
-Landing site and legal docs for **Toki (토키)**, the iOS live voice interpreter
-that works where there is no internet at all. One page in Korean and English,
+Landing site and legal docs for **Toki (토키)**, the live voice interpreter for
+iPhone and Mac that works where there is no internet at all. One page in Korean and English,
 switched from the top right (`?lang=ko` or `?lang=en` links straight to either).
 Share `/en/` for an English link preview: it carries the English OG tags and
 forwards to `?lang=en`.
@@ -17,12 +17,13 @@ docs/
 ├── privacy.html        # privacy policy (ko/en)
 ├── terms.html          # terms of service (ko/en)
 ├── en/index.html       # English share link (OG tags, then forwards to ?lang=en)
-├── styles.css          # daylight jelly theme
+├── styles.css          # cream paper theme, the same palette as the app
 └── assets/
     ├── js/i18n.js      # English copy and the language switch
-    ├── js/toki.js      # Toki mascot drawn as SVG, same geometry and motion as the app
+    ├── js/toki.js      # Toki the crayon bunny: one drawing per mood, breathing, hops
     ├── js/site.js      # page interactions
-    ├── img/            # app icon, OG image, app screenshots (ko, en)
+    ├── img/            # app icon, OG images, app screenshots (ko, en), Toki drawings and scenes
+    ├── audio/          # the hop sound
     └── video/          # ambient cabin footage
 ```
 
